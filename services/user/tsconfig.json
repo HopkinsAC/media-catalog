@@ -1,19 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es6",                         
-    "module": "commonjs",                    
-    "strict": true,                          
-    "esModuleInterop": true,                  
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
-    "forceConsistentCasingInFileNames": true,  
+    "forceConsistentCasingInFileNames": true,
     "paths": {
-      "*": [
-        "node_modules/*"
-      ]
+      "#root/*": ["./src/*"],
+      "*": ["node_modules/*"]
     }
   },
   "include": ["src/**/*"],

@@ -1,7 +1,7 @@
 import express, { Express } from 'express';
 import cors from 'cors';
 
-import { applicationRouter } from './routers';
+import { applicationRouter } from '#root/app/routers';
 
 export class Application {
   _server: Express;
