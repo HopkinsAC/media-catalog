@@ -20,4 +20,9 @@ export class UsersRepository implements IRepository<User> {
 
     return <User>(<unknown>user);
   }
+
+  public async removeOne(obj: User): Promise<void> {
+    const repository: Repository<User> = getRepository(User);
+    repository.remove(obj);
+  }
 }

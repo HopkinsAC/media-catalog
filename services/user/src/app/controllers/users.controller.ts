@@ -57,4 +57,20 @@ export class UsersController {
       return next(err);
     }
   }
+
+  public async deleteUser(request: Request, response: Response, next: NextFunction): Promise<any> {
+    try {
+      const user = await this._repository.findOne(request.params.username);
+
+      if (!user) {
+        return next(new Error('Invalid user ID'));
+      }
+
+      await this._repository.removeOne(user);
+
+      return response.end();
+    } catch (err) {
+      return next(err);
+    }
+  }
 }

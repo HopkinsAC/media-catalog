@@ -20,4 +20,8 @@ router.get('/:username', async (request: Request, response: Response, next: Next
   await controller.getUser(request, response, next);
 });
 
+router.delete('/:username', async (request: Request, response: Response, next: NextFunction) => {
+  await controller.deleteUser(request, response, next);
+});
+
 export const usersRouter: Router = router;
