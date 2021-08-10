@@ -43,4 +43,18 @@ export class UsersController {
       .then((users) => response.status(200).send(users))
       .catch((error) => response.status(500).send({ error: error }));
   }
+
+  public async getUser(request: Request, response: Response, next: NextFunction): Promise<any> {
+    try {
+      const user = await this._repository.findOne(request.params.username);
+
+      if (!user) {
+        return next(new Error('Invalid user ID'));
+      }
+
+      return response.json(user);
+    } catch (err) {
+      return next(err);
+    }
+  }
 }

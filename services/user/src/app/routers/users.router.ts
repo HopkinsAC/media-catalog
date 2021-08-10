@@ -16,4 +16,8 @@ router.get('/', async (request: Request, response: Response, next: NextFunction)
   await controller.getAllUsers(request, response, next);
 });
 
+router.get('/:username', async (request: Request, response: Response, next: NextFunction) => {
+  await controller.getUser(request, response, next);
+});
+
 export const usersRouter: Router = router;
