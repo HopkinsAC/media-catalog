@@ -8,6 +8,10 @@ const router: Router = express.Router();
 const usersRepository: IRepository<User> = new UsersRepository();
 const controller: UsersController = new UsersController(usersRepository);
 
+router.post('/', async (request: Request, response: Response, next: NextFunction) => {
+  await controller.createUser(request, response, next);
+});
+
 router.get('/', async (request: Request, response: Response, next: NextFunction) => {
   await controller.getAllUsers(request, response, next);
 });
