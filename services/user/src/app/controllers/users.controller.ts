@@ -1,18 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
-import { User } from '../models';
+
+import { IRepository } from '#root/app/repositories';
+import { User } from '#root/app/data';
 
 export class UsersController {
-  private readonly users: User[];
+  private readonly _repository: IRepository<User>;
 
-  constructor() {
-    this.users = [
-      new User('12345', 'jmw5598', 'Jason', 'White', 'asdfaw'),
-      new User('23456', 'djt2020', 'Daniel', 'Townswell', 'ewrfa'),
-      new User('34567', 'dlw3512', 'Danielle', 'Whitmore', 'xzcvsaa'),
-    ];
+  constructor(repository: IRepository<User>) {
+    this._repository = repository;
   }
 
   public async getAllUsers(request: Request, response: Response, next: NextFunction): Promise<any> {
-    return response.status(200).send(this.users);
+    return this._repository
+      .findAll()
+      .then((users) => response.status(200).send(users))
+      .catch((error) => response.status(500).send({ error: error }));
   }
 }
