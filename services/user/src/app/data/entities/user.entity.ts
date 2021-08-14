@@ -1,4 +1,5 @@
-import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
+import { Column, Entity } from 'typeorm';
+
 import { BaseEntity } from './base.entity';
 
 @Entity('users')
