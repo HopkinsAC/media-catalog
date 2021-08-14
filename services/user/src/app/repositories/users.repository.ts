@@ -11,18 +11,27 @@ export class UsersRepository implements IRepository<User> {
 
   public async findAll(): Promise<User[]> {
     const repository: Repository<User> = getRepository(User);
+
     return repository.find();
   }
 
   public async findOne(objId: string): Promise<User> {
     const repository: Repository<User> = getRepository(User);
-    const user = repository.findOne({ userName: objId });
+    const user = await repository.findOne({ userName: objId });
+
+    return <User>(<unknown>user);
+  }
+
+  public async findOneWithFieldSelection(objId: string, fields: any): Promise<User> {
+    const repository: Repository<User> = getRepository(User);
+    const user = await repository.findOne({ userName: objId }, fields);
 
     return <User>(<unknown>user);
   }
 
   public async removeOne(obj: User): Promise<void> {
     const repository: Repository<User> = getRepository(User);
-    repository.remove(obj);
+
+    await repository.remove(obj);
   }
 }
