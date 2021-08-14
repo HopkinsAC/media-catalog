@@ -1,6 +1,4 @@
 import bcrypt from 'bcryptjs';
 
-const passwordCompareSync = (passwordToTest: string, passwordHash: string) =>
+export const comparePasswordSync = (passwordToTest: string, passwordHash: string) =>
   bcrypt.compareSync(passwordToTest, passwordHash);
-
-export default passwordCompareSync;

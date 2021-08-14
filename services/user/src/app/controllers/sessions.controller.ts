@@ -3,11 +3,9 @@ import dayjs from 'dayjs';
 
 import { Request, Response, NextFunction } from 'express';
 
-import { IRepository, UsersRepository, SessionsRepository } from '#root/app/repositories';
+import { IRepository } from '#root/app/repositories';
 import { Session, User } from '#root/app/data';
-import { generateUUID } from '#root/app/services';
-
-import comparePasswordSync from '#root/app/services/comparePasswordSync';
+import { generateUUID, comparePasswordSync } from '#root/app/services';
 
 const USER_SESSION_EXPIRY_HOURS = <number>config.get('USER_SESSION_EXPIRY_HOURS');
 
